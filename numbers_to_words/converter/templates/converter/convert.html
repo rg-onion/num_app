@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Конвертер чисел в слова</title>
+    <meta name="description" content="Простой и быстрый конвертер чисел в слова на английском, немецком и чешском языках.">
+    <meta name="keywords" content="конвертер чисел, числа в слова, английский, немецкий, чешский, онлайн-конвертер">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Конвертер чисел в слова</h1>
+        <p>Введите число и выберите язык, и мы конвертируем его в слова для вас. Поддерживаются английский, немецкий и чешский языки.</p>
+        <!-- Остальной контент -->
+        <form method="get">
+            <div class="form-group">
+                <label for="numberInput">Введите число</label>
+                <input type="number" class="form-control" id="numberInput" name="number" value="{{ number }}">
+            </div>
+            <div class="form-group">
+                <label for="langSelect">Выберите язык</label>
+                <select class="form-control" id="langSelect" name="lang">
+                    <option value="en" {% if lang == "en" %}selected{% endif %}>English</option>
+                    <option value="de" {% if lang == "de" %}selected{% endif %}>Deutsch</option>
+                    <option value="cz" {% if lang == "cz" %}selected{% endif %}>Česky</option>
+                    <option value="ru" {% if lang == "ru" %}selected{% endif %}>Русский</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Конвертировать</button>
+        </form>
+
+        {% if words %}
+        <div class="alert alert-success mt-3" role="alert">
+            Результат: {{ words }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
